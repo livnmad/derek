@@ -1,13 +1,283 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .app {
+  scroll-behavior: smooth;
+  overflow-y: auto;
+  height: 100vh;
+  background: #ffffff;
+}
+
+/* Hero Section */
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background: #ffffff;
+}
+
+.signature-logo {
+  margin-bottom: 4rem;
+  width: 100%;
+  max-width: 600px;
+}
+
+.signature-svg {
+  width: 100%;
+  height: auto;
+}
+
+.signature-svg text {
+  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 300;
+  font-style: italic;
+  fill: #000000;
+  letter-spacing: 2px;
+}
+
+.hero-nav {
+  display: flex;
+  gap: 3rem;
+  margin-bottom: 4rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.nav-link {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #333;
+  text-transform: uppercase;
+  padding: 0.5rem 0;
+  position: relative;
+}
+
+.nav-link .arrow {
+  font-size: 0.875rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #000;
+}
+
+.nav-link:hover .arrow {
+  opacity: 1;
+}
+
+.contact-btn {
+  padding: 1rem 3rem;
+  border: 2px solid #000;
+  background: transparent;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.contact-btn:hover {
+  background: #000;
+  color: #fff;
+}
+
+/* Full-Bleed Panels */
+.panel {
+  min-height: 100vh;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  background: transparent;
+  padding: 4rem 2rem;
+  position: relative;
 }
 
-.app h1 {
-  color: black;
+.panel-content {
+  max-width: 1000px;
+  width: 100%;
+}
+
+.panel h2 {
   font-size: 3rem;
-  font-weight: normal;
+  font-weight: 300;
+  margin-bottom: 3rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Experience Panel */
+.experience-panel {
+  background: #f8f8f8;
+}
+
+.experience-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.experience-item {
+  border-left: 2px solid #000;
+  padding-left: 2rem;
+}
+
+.experience-item h3 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+
+.experience-item .company {
+  font-size: 1.125rem;
+  color: #666;
+  margin-bottom: 0.25rem;
+}
+
+.experience-item .period {
+  font-size: 0.875rem;
+  color: #999;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.experience-item .description {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Skills Panel */
+.skills-panel {
+  background: #ffffff;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
+}
+
+.skill-category h3 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.skill-category ul {
+  list-style: none;
+}
+
+.skill-category li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 1rem;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.skill-category li:hover {
+  padding-left: 1rem;
+  color: #000;
+}
+
+/* Projects Panel */
+.projects-panel {
+  background: #000;
+  color: #fff;
+}
+
+.projects-panel h2 {
+  color: #fff;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.project-card {
+  padding: 2rem;
+  border: 1px solid #333;
+  transition: all 0.3s ease;
+}
+
+.project-card:hover {
+  border-color: #fff;
+  transform: translateY(-5px);
+}
+
+.project-card h3 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.project-card p {
+  font-size: 1rem;
+  color: #ccc;
+  line-height: 1.6;
+}
+
+/* About Me Panel */
+.about-panel {
+  background: #f8f8f8;
+}
+
+.about-text {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: #333;
+  margin-bottom: 3rem;
+  max-width: 700px;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.contact-info p {
+  font-size: 1rem;
+  color: #666;
+  letter-spacing: 0.5px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-nav {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .panel h2 {
+    font-size: 2rem;
+  }
+
+  .signature-svg text {
+    font-size: 32px;
+  }
+
+  .skills-grid,
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
 }
