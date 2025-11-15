@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+import medallion from '../public/medallion.png';
 
 const FEATURE_FLAGS = {
   showMenu: false, // Menu disabled
@@ -75,7 +76,7 @@ const App: React.FC = () => {
         {/* Hero Section with Signature Logo */}
         <section className="hero-section">
         <div className="signature-logo">
-          <svg viewBox="0 0 420 120" className="signature-svg">
+          <svg viewBox="0 0 420 80" className="signature-svg">
             <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle">
               Derek T. Bateman
             </text>
@@ -83,6 +84,7 @@ const App: React.FC = () => {
           <div className="subtitle">
             Technology Leader | Innovator | Problem Solver | Architect
           </div>
+          <img src={medallion} alt="DB Medallion" className="medallion" />
         </div>
         
         {FEATURE_FLAGS.showMenu && (

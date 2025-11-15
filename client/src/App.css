@@ -76,12 +76,20 @@
 
 .subtitle {
   text-align: center;
-  margin-top: 1.125rem;
+  margin-top: -0.5rem;
   font-size: 0.875rem;
   font-weight: 300;
   letter-spacing: 2px;
   color: #666;
   text-transform: uppercase;
+}
+
+.medallion {
+  width: 120px;
+  height: 120px;
+  display: block;
+  margin: 15px auto 0;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
 }
 
 .hero-nav {
