@@ -2,6 +2,7 @@ import express, { Request, Response } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { Client } from '@elastic/elasticsearch';
+import nodemailer from 'nodemailer';
 
 dotenv.config();
 
@@ -11,6 +12,15 @@ const PORT = process.env.PORT || 3002;
 // Rate limiting store (IP -> timestamp)
 const rateLimitStore = new Map<string, number>();
 const RATE_LIMIT_WINDOW = 60000; // 1 minute in milliseconds
+
+// Email transporter configuration
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_APP_PASSWORD, // Use App Password for Gmail
+  },
+});
 
 // Middleware
 app.use(cors());
@@ -73,25 +83,135 @@ app.post('/api/contact', rateLimiter, async (req: Request, res: Response) => {
       }
     }
 
-    // Log the submission (in production, you'd save to database or send email)
-    console.log('Contact form submission:', {
+    // Create HTML email
+    const htmlEmail = `
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <style>
+            body {
+              font-family: 'Inter', Arial, sans-serif;
+              line-height: 1.6;
+              color: #333;
+              max-width: 600px;
+              margin: 0 auto;
+              padding: 20px;
+            }
+            .header {
+              background: #000;
+              color: #fff;
+              padding: 30px 20px;
+              text-align: center;
+              margin-bottom: 30px;
+            }
+            .header h1 {
+              margin: 0;
+              font-size: 24px;
+              font-weight: 300;
+              letter-spacing: 2px;
+            }
+            .content {
+              background: #f8f8f8;
+              padding: 30px;
+              border-radius: 4px;
+            }
+            .field {
+              margin-bottom: 20px;
+            }
+            .label {
+              font-weight: 600;
+              text-transform: uppercase;
+              font-size: 12px;
+              letter-spacing: 1px;
+              color: #666;
+              margin-bottom: 5px;
+            }
+            .value {
+              font-size: 16px;
+              color: #000;
+              padding: 10px 0;
+            }
+            .message-box {
+              background: #fff;
+              padding: 20px;
+              border-left: 3px solid #000;
+              margin-top: 10px;
+              white-space: pre-wrap;
+            }
+            .footer {
+              margin-top: 30px;
+              padding-top: 20px;
+              border-top: 1px solid #ddd;
+              font-size: 12px;
+              color: #999;
+              text-align: center;
+            }
+          </style>
+        </head>
+        <body>
+          <div class="header">
+            <h1>New Contact Form Submission</h1>
+          </div>
+          <div class="content">
+            <div class="field">
+              <div class="label">From</div>
+              <div class="value">${name}</div>
+            </div>
+            <div class="field">
+              <div class="label">Email</div>
+              <div class="value"><a href="mailto:${email}">${email}</a></div>
+            </div>
+            <div class="field">
+              <div class="label">Message</div>
+              <div class="message-box">${message}</div>
+            </div>
+            <div class="field">
+              <div class="label">Submitted</div>
+              <div class="value">${new Date().toLocaleString('en-US', { 
+                dateStyle: 'full', 
+                timeStyle: 'long' 
+              })}</div>
+            </div>
+            <div class="field">
+              <div class="label">IP Address</div>
+              <div class="value">${clientIP}</div>
+            </div>
+          </div>
+          <div class="footer">
+            This message was sent from derekbateman.com contact form
+          </div>
+        </body>
+      </html>
+    `;
+
+    // Send email
+    const mailOptions = {
+      from: process.env.EMAIL_USER,
+      to: 'derekbateman81@gmail.com',
+      replyTo: email,
+      subject: `Contact Form: Message from ${name}`,
+      html: htmlEmail,
+      text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}\n\nSubmitted: ${new Date().toLocaleString()}\nIP: ${clientIP}`,
+    };
+
+    await transporter.sendMail(mailOptions);
+
+    // Log the submission
+    console.log('Contact form submission sent via email:', {
       name,
       email,
-      message,
       ip: clientIP,
       timestamp: new Date().toISOString(),
     });
 
-    // TODO: Save to database or send email notification
-    // For now, just return success
     res.json({
       success: true,
-      message: 'Message received successfully',
+      message: 'Message sent successfully',
     });
   } catch (error) {
     console.error('Contact form error:', error);
     res.status(500).json({
-      error: 'Failed to process your message. Please try again later.',
+      error: 'Failed to send your message. Please try again later.',
     });
   }
 });
