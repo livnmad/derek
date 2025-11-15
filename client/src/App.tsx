@@ -168,9 +168,6 @@ const App: React.FC = () => {
           </form>
         </div>
       </section>
-
-        </div>
-      </section>
     </div>
   );
 };
