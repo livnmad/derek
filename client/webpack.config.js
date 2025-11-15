@@ -22,6 +22,10 @@ module.exports = {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
+      {
+        test: /\.(svg|png|jpg|jpeg|gif)$/,
+        type: 'asset/resource',
+      },
     ],
   },
   plugins: [
@@ -34,6 +38,9 @@ module.exports = {
     hot: true,
     open: true,
     historyApiFallback: true,
+    static: {
+      directory: path.join(__dirname, 'public'),
+    },
     proxy: [
       {
         context: ['/api'],

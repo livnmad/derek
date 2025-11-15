@@ -8,7 +8,39 @@
   scroll-behavior: smooth;
   overflow-y: auto;
   height: 100vh;
-  background: #ffffff;
+  background: 
+    linear-gradient(110deg, rgba(255,255,255,0.3) 0%, transparent 50%, rgba(255,255,255,0.3) 100%),
+    radial-gradient(ellipse at 20% 30%, rgba(168,184,200,0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(201,184,138,0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(255,255,255,0.2) 0%, transparent 70%),
+    linear-gradient(135deg, #f5f1e8 0%, #e8dcc8 25%, #c9b88a 50%, #d4c5aa 75%, #f0e9dc 100%);
+  background-size: 100% 100%;
+  position: relative;
+}
+
+.app::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    linear-gradient(45deg, transparent 45%, rgba(168,184,200,0.1) 49%, rgba(168,184,200,0.1) 51%, transparent 55%),
+    linear-gradient(-45deg, transparent 45%, rgba(201,169,97,0.08) 49%, rgba(201,169,97,0.08) 51%, transparent 55%);
+  background-size: 100px 100px;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.content-wrapper {
+  background: white;
+  min-height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-shadow: 0 0 50px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 1;
 }
 
 /* Hero Section */

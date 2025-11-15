@@ -71,8 +71,9 @@ const App: React.FC = () => {
 
   return (
     <div className="app">
-      {/* Hero Section with Signature Logo */}
-      <section className="hero-section">
+      <div className="content-wrapper">
+        {/* Hero Section with Signature Logo */}
+        <section className="hero-section">
         <div className="signature-logo">
           <svg viewBox="0 0 420 120" className="signature-svg">
             <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle">
@@ -171,6 +172,7 @@ const App: React.FC = () => {
           </form>
         </div>
       </section>
+      </div>
     </div>
   );
 };
