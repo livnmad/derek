@@ -186,7 +186,7 @@ app.post('/api/contact', rateLimiter, async (req: Request, res: Response) => {
 
     // Send email
     const mailOptions = {
-      from: process.env.EMAIL_USER,
+      from: '"Derek Bateman Contact Form" <' + process.env.EMAIL_USER + '>',
       to: 'derekbateman81@gmail.com',
       replyTo: email,
       subject: `Contact Form: Message from ${name}`,
