@@ -34,6 +34,7 @@ WORKDIR /app
 
 # Copy built artifacts and dependencies
 COPY --from=builder --chown=nodejs:nodejs /app/server/dist ./server/dist
+COPY --from=builder --chown=nodejs:nodejs /app/client/dist ./client/dist
 COPY --from=builder --chown=nodejs:nodejs /app/server/package*.json ./server/
 COPY --from=builder --chown=nodejs:nodejs /app/package*.json ./
 
@@ -44,11 +45,11 @@ RUN npm ci --workspace=server --omit=dev
 USER nodejs
 
 # Expose port
-EXPOSE 3101
+EXPOSE 3100
 
 # Health check endpoint
 HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 \
-    CMD wget --quiet --tries=1 --spider http://localhost:3101/api/health || exit 1
+    CMD wget --quiet --tries=1 --spider http://localhost:3100/api/health || exit 1
 
 # Start server
 CMD ["node", "server/dist/index.js"]

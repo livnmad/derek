@@ -2,6 +2,7 @@ import express, { Request, Response } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import nodemailer from 'nodemailer';
+import path from 'path';
 
 dotenv.config();
 
@@ -25,7 +26,7 @@ const transporter = nodemailer.createTransport({
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
     ? ['https://derekbateman.com', 'https://www.derekbateman.com']
-    : ['http://localhost:3100', 'http://localhost:3000'],
+    : ['http://localhost:3100'],
   credentials: true
 }));
 app.use(express.json());
@@ -228,6 +229,17 @@ app.get('/api/health', (req: Request, res: Response) => {
     uptime: process.uptime(),
   });
 });
+
+// Serve static files from React app in production
+if (process.env.NODE_ENV === 'production') {
+  const clientPath = path.join(__dirname, '../../client/dist');
+  app.use(express.static(clientPath));
+  
+  // SPA fallback - serve index.html for all non-API routes
+  app.get('*', (req: Request, res: Response) => {
+    res.sendFile(path.join(clientPath, 'index.html'));
+  });
+}
 
 const HOST = '0.0.0.0'; // Listen on all interfaces
 
