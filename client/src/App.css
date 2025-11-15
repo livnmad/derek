@@ -25,7 +25,7 @@
 .signature-logo {
   margin-bottom: 4rem;
   width: 100%;
-  max-width: 600px;
+  max-width: 700px;
 }
 
 .signature-svg {
@@ -35,11 +35,21 @@
 
 .signature-svg text {
   font-family: 'Cormorant Garamond', 'Playfair Display', serif;
-  font-size: 48px;
+  font-size: 58px;
   font-weight: 300;
   font-style: italic;
   fill: #000000;
+  letter-spacing: 3px;
+}
+
+.subtitle {
+  text-align: center;
+  margin-top: 1.125rem;
+  font-size: 0.875rem;
+  font-weight: 300;
   letter-spacing: 2px;
+  color: #666;
+  text-transform: uppercase;
 }
 
 .hero-nav {
@@ -389,11 +399,11 @@
   }
 
   .signature-svg text {
-    font-size: 32px;
+    font-size: 40px;
   }
 
-  .skills-grid,
-  .projects-grid {
-    grid-template-columns: 1fr;
+  .subtitle {
+    font-size: 0.75rem;
+    letter-spacing: 1px;
   }
 }

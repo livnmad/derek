@@ -74,11 +74,14 @@ const App: React.FC = () => {
       {/* Hero Section with Signature Logo */}
       <section className="hero-section">
         <div className="signature-logo">
-          <svg viewBox="0 0 400 120" className="signature-svg">
+          <svg viewBox="0 0 420 120" className="signature-svg">
             <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle">
-              Derek Bateman
+              Derek T. Bateman
             </text>
           </svg>
+          <div className="subtitle">
+            Technology Leader | Innovator | Problem Solver | Architect
+          </div>
         </div>
         
         {FEATURE_FLAGS.showMenu && (
