@@ -6,7 +6,7 @@ import nodemailer from 'nodemailer';
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3002;
+const PORT = parseInt(process.env.PORT || '3101', 10);
 
 // Rate limiting store (IP -> timestamp)
 const rateLimitStore = new Map<string, number>();
@@ -17,12 +17,17 @@ const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_APP_PASSWORD, // Use App Password for Gmail
+    pass: process.env.EMAIL_APP_PASSWORD?.replace(/"/g, ''), // Remove quotes if present
   },
 });
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: process.env.NODE_ENV === 'production' 
+    ? ['https://derekbateman.com', 'https://www.derekbateman.com']
+    : ['http://localhost:3100', 'http://localhost:3000'],
+  credentials: true
+}));
 app.use(express.json());
 
 // Get client IP address
@@ -224,6 +229,8 @@ app.get('/api/health', (req: Request, res: Response) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+const HOST = '0.0.0.0'; // Listen on all interfaces
+
+app.listen(PORT, HOST, () => {
+  console.log(`Server running on http://${HOST}:${PORT}`);
 });
