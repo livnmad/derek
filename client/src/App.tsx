@@ -77,11 +77,9 @@ const App: React.FC = () => {
       <div className="content-wrapper">
         {/* Hero Section with Signature Logo */}
         <section className="hero-section">
-        <div className="scroll">
+        <div className="signature-section">
           <img src={rightscroll} alt="Right Scroll" className="right-scroll" />
           <img src={leftscroll} alt="Left Scroll" className="left-scroll" />
-        </div>
-        <div className="signature-logo">
           <div  className="signature-svg">
             <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle">
               Derek T. Bateman
@@ -171,7 +169,7 @@ const App: React.FC = () => {
             </button>
 
             {formStatus === 'success' && (
-              <div className="form-message success">Message sent successfully!</div>
+              <div className="form-message success">Message Sent!</div>
             )}
             {formStatus === 'error' && (
               <div className="form-message error">{errorMessage}</div>
