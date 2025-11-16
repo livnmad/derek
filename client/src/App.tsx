@@ -75,14 +75,18 @@ const App: React.FC = () => {
       <div className="content-wrapper">
         {/* Hero Section with Signature Logo */}
         <section className="hero-section">
+        <div className="scroll">
+          <img src="../right-scroll.png" alt="Right Scroll" className="right-scroll" />
+          <img src="../left-scroll.png" alt="Left Scroll" className="left-scroll" />
+        </div>
         <div className="signature-logo">
-          <svg viewBox="0 0 420 80" className="signature-svg">
-            <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle">
+          <div  className="signature-svg">
+            <text x="50%" y="40%" textAnchor="middle" dominantBaseline="middle">
               Derek T. Bateman
             </text>
-          </svg>
+          </div>
           <div className="subtitle">
-            Technology Leader | Innovator | Problem Solver | Architect
+            Technology Leader | Innovator | Architect
           </div>
           <img src={medallion} alt="DB Medallion" className="medallion" />
         </div>

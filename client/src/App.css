@@ -57,21 +57,48 @@
 .signature-logo {
   margin-bottom: 4rem;
   width: 100%;
-  max-width: 700px;
+  max-width: 600px;
 }
+
+.scroll {
+  position: absolute;
+  top:115px;
+  margin-right: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.scroll .left-scroll {
+  float: left;
+  margin-left: 80px;
+}
+
+.scroll .right-scroll {
+  float: right;
+  margin-right: 80px;
+}
+
+.scroll img {
+  display: block;
+  margin: 0 auto;
+  width: 180px;
+}
+
 
 .signature-svg {
   width: 100%;
   height: auto;
+  text-align: center;
+  padding-bottom: 15px;
 }
 
 .signature-svg text {
   font-family: 'Cormorant Garamond', 'Playfair Display', serif;
-  font-size: 58px;
-  font-weight: 300;
+  font-size: 75px;
+  font-weight: 400;
   font-style: italic;
   fill: #000000;
-  letter-spacing: 3px;
+  letter-spacing: 4px;
 }
 
 .subtitle {
@@ -88,7 +115,7 @@
   width: 120px;
   height: 120px;
   display: block;
-  margin: 15px auto 0;
+  margin: 20px auto 0px auto;
   filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
 }
 
@@ -149,7 +176,7 @@
 .contact-section {
   width: 100%;
   max-width: 600px;
-  margin-top: 3rem;
+  margin-top: 0;
 }
 
 .contact-section h2 {
