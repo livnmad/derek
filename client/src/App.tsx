@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
-import medallion from '../public/medallion.png';
+import medallion from '../public/images/medallion.png';
+import rightscroll from '../public/images/rightscroll.png';
+import leftscroll from '../public/images/leftscroll.png';
 
 const FEATURE_FLAGS = {
   showMenu: false, // Menu disabled
@@ -76,21 +78,20 @@ const App: React.FC = () => {
         {/* Hero Section with Signature Logo */}
         <section className="hero-section">
         <div className="scroll">
-          <img src="../right-scroll.png" alt="Right Scroll" className="right-scroll" />
-          <img src="../left-scroll.png" alt="Left Scroll" className="left-scroll" />
+          <img src={rightscroll} alt="Right Scroll" className="right-scroll" />
+          <img src={leftscroll} alt="Left Scroll" className="left-scroll" />
         </div>
         <div className="signature-logo">
           <div  className="signature-svg">
-            <text x="50%" y="40%" textAnchor="middle" dominantBaseline="middle">
+            <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle">
               Derek T. Bateman
             </text>
           </div>
           <div className="subtitle">
             Technology Leader | Innovator | Architect
           </div>
-          <img src={medallion} alt="DB Medallion" className="medallion" />
+          <img src={medallion} alt="Medallion" className="medallion" />
         </div>
-        
         {FEATURE_FLAGS.showMenu && (
           <nav className="hero-nav">
             <button className="nav-link">
