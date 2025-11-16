@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
-import medallion from '../public/images/medallion.png';
-import rightscroll from '../public/images/rightscroll.png';
-import leftscroll from '../public/images/leftscroll.png';
+import medallion from '../public/medallion.png';
+import rightscroll from '../public/rightscroll.png';
+import leftscroll from '../public/leftscroll.png';
 
 const FEATURE_FLAGS = {
   showMenu: false, // Menu disabled
