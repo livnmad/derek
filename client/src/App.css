@@ -57,25 +57,7 @@
 .signature-section {
   margin-bottom: 4rem;
   width: 100%;
-
 }
-
-.signature-section img.left-scroll {
-  float: left;
-  margin-left: 4%;
-  display: block;
-  margin: 0 auto;
-  width: 14%;
-}
-
-.signature-section img.right-scroll {
-  float: right;
-  margin-right: 4%;
-  display: block;
-  margin: 0 auto;
-  width: 14%;
-}
-
 
 .signature-svg {
   width: 100%;
@@ -87,10 +69,11 @@
 .signature-svg text {
   font-family: 'Cormorant Garamond', 'Playfair Display', serif;
   font-size: 75px;
-  font-weight: 400;
-  font-style: italic;
+  font-weight: 600;
+  font-style: normal;
   fill: #000000;
-  letter-spacing: 4px;
+  letter-spacing: 6px;
+  white-space: nowrap;
 }
 
 .subtitle {
@@ -101,6 +84,7 @@
   letter-spacing: 2px;
   color: #666;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .signature-section img.medallion {
@@ -447,22 +431,159 @@
 }
 
 /* Responsive */
+@media (max-width: 1024px) {
+  .content-wrapper {
+    max-width: 95%;
+  }
+
+  .hero-section {
+    padding: 2rem 5%;
+  }
+
+  .signature-svg text {
+    font-size: clamp(40px, 8vw, 75px);
+  }
+
+  .subtitle {
+    font-size: clamp(0.65rem, 1.8vw, 0.875rem);
+  }
+
+  .signature-section img.medallion {
+    width: clamp(80px, 15vw, 120px);
+    height: clamp(80px, 15vw, 120px);
+    margin: clamp(30px, 5vw, 55px) auto 0 auto;
+  }
+}
+
 @media (max-width: 768px) {
+  .content-wrapper {
+    max-width: 100%;
+    box-shadow: none;
+  }
+
+  .hero-section {
+    padding: 2rem 4%;
+    min-height: auto;
+    padding-top: 10vh;
+  }
+
+  .signature-section {
+    margin-bottom: 2rem;
+  }
+
+  .signature-svg text {
+    font-size: clamp(32px, 10vw, 50px);
+    letter-spacing: 2px;
+  }
+
+  .subtitle {
+    font-size: clamp(0.6rem, 2.5vw, 0.75rem);
+    letter-spacing: 1px;
+    padding: 0 1rem;
+  }
+
+  .signature-section img.medallion {
+    width: clamp(70px, 20vw, 100px);
+    height: clamp(70px, 20vw, 100px);
+    margin: clamp(25px, 6vw, 40px) auto 0 auto;
+  }
+
+  .contact-section {
+    max-width: 100%;
+    padding: 0 4%;
+  }
+
+  .contact-section h2 {
+    font-size: clamp(1rem, 4vw, 1.5rem);
+  }
+
+  .form-group input,
+  .form-group textarea {
+    font-size: clamp(0.875rem, 3vw, 1rem);
+    padding: clamp(0.75rem, 2.5vw, 1rem);
+  }
+
+  .submit-btn {
+    font-size: clamp(0.75rem, 2.5vw, 0.875rem);
+    padding: clamp(0.875rem, 2.5vw, 1rem) clamp(1.5rem, 4vw, 2rem);
+  }
+
   .hero-nav {
     flex-direction: column;
     gap: 1.5rem;
   }
 
+  .panel {
+    padding: 3rem 4%;
+  }
+
   .panel h2 {
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 6vw, 2rem);
+  }
+
+  .projects-grid,
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .experience-item {
+    padding-left: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding: 1.5rem 3%;
+    padding-top: 8vh;
+  }
+
+  .signature-section {
+    margin-bottom: 1.5rem;
   }
 
   .signature-svg text {
-    font-size: 40px;
+    font-size: clamp(24px, 12vw, 40px);
+    letter-spacing: 1px;
   }
 
   .subtitle {
-    font-size: 0.75rem;
+    font-size: clamp(0.55rem, 3vw, 0.65rem);
+    letter-spacing: 0.5px;
+    padding: 0 0.5rem;
+  }
+
+  .signature-section img.medallion {
+    width: clamp(60px, 22vw, 80px);
+    height: clamp(60px, 22vw, 80px);
+    margin: clamp(20px, 7vw, 30px) auto 0 auto;
+  }
+
+  .contact-section {
+    padding: 0 3%;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    font-size: clamp(0.8rem, 3.5vw, 0.875rem);
+    padding: clamp(0.65rem, 3vw, 0.75rem);
+  }
+
+  .form-group textarea {
+    min-height: 100px;
+  }
+
+  .submit-btn {
+    font-size: clamp(0.7rem, 3vw, 0.75rem);
+    padding: clamp(0.75rem, 3vw, 0.875rem) clamp(1.25rem, 5vw, 1.5rem);
     letter-spacing: 1px;
+  }
+
+  .panel {
+    padding: 2rem 3%;
+  }
+
+  .about-text {
+    font-size: clamp(1rem, 4vw, 1.125rem);
   }
 }

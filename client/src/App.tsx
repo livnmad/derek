@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
 import medallion from '../public/medallion.png';
-import rightscroll from '../public/rightscroll.png';
-import leftscroll from '../public/leftscroll.png';
 
 const FEATURE_FLAGS = {
   showMenu: false, // Menu disabled
@@ -78,11 +76,9 @@ const App: React.FC = () => {
         {/* Hero Section with Signature Logo */}
         <section className="hero-section">
         <div className="signature-section">
-          <img src={rightscroll} alt="Right Scroll" className="right-scroll" />
-          <img src={leftscroll} alt="Left Scroll" className="left-scroll" />
           <div  className="signature-svg">
             <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle">
-              Derek T. Bateman
+              Derek Bateman
             </text>
           </div>
           <div className="subtitle">
