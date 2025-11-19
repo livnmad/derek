@@ -7,7 +7,7 @@ import path from 'path';
 dotenv.config();
 
 const app = express();
-const PORT = parseInt(process.env.PORT || '3001', 10);
+const PORT = parseInt(process.env.PORT || '3000', 10);
 
 // Rate limiting store (IP -> timestamp)
 const rateLimitStore = new Map<string, number>();
@@ -26,7 +26,7 @@ const transporter = nodemailer.createTransport({
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
     ? ['https://derekbateman.com', 'https://www.derekbateman.com']
-    : ['http://localhost:3001'],
+    : ['http://localhost:3000'],
   credentials: true
 }));
 app.use(express.json());

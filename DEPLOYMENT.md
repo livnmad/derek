@@ -10,7 +10,7 @@
 1. **Configure environment variables** in `server/.env`:
 ```env
 NODE_ENV=production
-PORT=3001
+PORT=3000
 EMAIL_USER=your-email@gmail.com
 EMAIL_APP_PASSWORD=your-app-password
 ```

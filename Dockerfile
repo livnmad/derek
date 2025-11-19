@@ -45,11 +45,11 @@ RUN npm ci --workspace=server --omit=dev
 USER nodejs
 
 # Expose port
-EXPOSE 3001
+EXPOSE 3000
 
 # Health check endpoint
-HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 \
-    CMD wget --quiet --tries=1 --spider http://localhost:3001/api/health || exit 1
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD wget --quiet --tries=1 --spider http://localhost:3000/api/health || exit 1
 
 # Start server
 CMD ["node", "server/dist/index.js"]
