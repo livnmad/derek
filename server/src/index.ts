@@ -232,12 +232,17 @@ app.get('/api/health', (req: Request, res: Response) => {
 
 // Serve static files from React app in production
 if (process.env.NODE_ENV === 'production') {
-  const clientPath = path.join(__dirname, '../../client/dist');
+  // In Docker: /app/client/dist
+  // In development: ../../client/dist
+  const clientPath = path.resolve(__dirname, '../../client/dist');
+  console.log('Serving static files from:', clientPath);
   app.use(express.static(clientPath));
   
   // SPA fallback - serve index.html for all non-API routes
   app.get('*', (req: Request, res: Response) => {
-    res.sendFile(path.join(clientPath, 'index.html'));
+    const indexPath = path.join(clientPath, 'index.html');
+    console.log('Serving index.html from:', indexPath);
+    res.sendFile(indexPath);
   });
 }
 

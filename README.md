@@ -42,8 +42,8 @@ npm run dev
 ```
 
 This will start:
-- React client on http://localhost:3002
-- Express server on http://localhost:3002
+- React client on http://localhost:3000
+- Express server on http://localhost:3000
 
 ### 4. Build for Production
 
